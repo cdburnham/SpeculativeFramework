@@ -1,0 +1,27 @@
+{
+  "network": {
+    "input_size": 2,
+    "class_count": 2,
+    "speculative_enabled": true,
+    "speculative_threshold": 0.10,
+    "weight_init_scale": 0.50,
+    "layers": [
+      { "units": 8, "activation": "relu" },
+      { "units": 2, "activation": "softmax" }
+    ]
+  },
+  "training": {
+    "epochs": 200,
+    "batch_size": 4,
+    "learning_rate": 0.10,
+    "gradient_clip": 5.0,
+    "seed": 3
+  },
+  "dataset": {
+    "format": "synthetic_xor"
+  },
+  "logging": {
+    "metrics_csv": "logs/xor_metrics.csv",
+    "checkpoint_bin": "logs/xor_checkpoint.bin"
+  }
+}

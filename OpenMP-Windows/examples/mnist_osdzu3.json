@@ -1,0 +1,33 @@
+{
+  "network": {
+    "input_size": 784,
+    "class_count": 10,
+    "speculative_enabled": true,
+    "speculative_threshold": 0.25,
+    "weight_init_scale": 0.10,
+    "layers": [
+      { "units": 16, "activation": "relu" },
+      { "units": 16, "activation": "relu" },
+      { "units": 10, "activation": "softmax" }
+    ]
+  },
+  "training": {
+    "epochs": 10,
+    "batch_size": 15,
+    "learning_rate": 0.01,
+    "gradient_clip": 5.0,
+    "seed": 7
+  },
+  "dataset": {
+    "format": "mnist_idx",
+    "train_features": "spec_backprop EPOCH - WORKING v25.2.9/mnist_data/train-images.idx3-ubyte",
+    "train_labels": "spec_backprop EPOCH - WORKING v25.2.9/mnist_data/train-labels.idx1-ubyte",
+    "test_features": "spec_backprop EPOCH - WORKING v25.2.9/mnist_data/t10k-images.idx3-ubyte",
+    "test_labels": "spec_backprop EPOCH - WORKING v25.2.9/mnist_data/t10k-labels.idx1-ubyte"
+  },
+  "logging": {
+    "metrics_csv": "logs/mnist_metrics.csv",
+    "predictions_csv": "logs/predictions.csv",
+    "checkpoint_bin": "logs/mnist_checkpoint.bin"
+  }
+}

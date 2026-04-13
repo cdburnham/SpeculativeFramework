@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OSDZU3 Speculative Backprop Configuration",
+  "type": "object",
+  "required": ["network", "training", "dataset"],
+  "properties": {
+    "network": {
+      "type": "object",
+      "required": ["input_size", "class_count", "layers"],
+      "properties": {
+        "input_size": { "type": "integer", "minimum": 1, "maximum": 4096 },
+        "class_count": { "type": "integer", "minimum": 1, "maximum": 256 },
+        "speculative_enabled": { "type": "boolean" },
+        "speculative_threshold": { "type": "number", "minimum": 0.0 },
+        "weight_init_scale": { "type": "number", "exclusiveMinimum": 0.0 },
+        "layers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["units", "activation"],
+            "properties": {
+              "units": { "type": "integer", "minimum": 1, "maximum": 512 },
+              "activation": {
+                "type": "string",
+                "enum": ["linear", "relu", "leaky_relu", "sigmoid", "softmax"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "training": {
+      "type": "object",
+      "required": ["epochs", "batch_size", "learning_rate", "gradient_clip"],
+      "properties": {
+        "epochs": { "type": "integer", "minimum": 1 },
+        "batch_size": { "type": "integer", "minimum": 1 },
+        "learning_rate": { "type": "number", "exclusiveMinimum": 0.0 },
+        "gradient_clip": { "type": "number", "exclusiveMinimum": 0.0 },
+        "seed": { "type": "integer", "minimum": 0 },
+        "train_limit": { "type": "integer", "minimum": 0 },
+        "test_limit": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "dataset": {
+      "type": "object",
+      "required": ["format"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["mnist_idx", "synthetic_xor"]
+        },
+        "train_features": { "type": "string" },
+        "train_labels": { "type": "string" },
+        "test_features": { "type": "string" },
+        "test_labels": { "type": "string" }
+      }
+    },
+    "logging": {
+      "type": "object",
+      "properties": {
+        "metrics_csv": { "type": "string" },
+        "predictions_csv": { "type": "string" },
+        "checkpoint_bin": { "type": "string" }
+      }
+    }
+  }
+}
