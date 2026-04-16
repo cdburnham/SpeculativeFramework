@@ -1,5 +1,15 @@
 # OSDZU3 Baseline Framework
 
+Contributors:
+- Cameron Burnham, (student of Western New England University)
+- Arnab Purkayastha (Assistant Professor of Electrical & Computer Engineering at Western New England University)
+- Ray Rimar (Professor in the Practice, Electrical and Computer Engineering at Rice University)
+
+Acknowledgements:
+This framework was produced atop of prior research conducted by Sed Centino and Chris Prague, both graduates of Western New England University.
+
+In addition, AI tools (GPT-5.4) sourced from OpenAI were leveraged to accelerate research, development and the documentation phases of this project.
+
 This repository is organized as a baseline directory for speculative backpropagation experiments on the OSDZU3 platform. It provides three framework variants with the same CLI contract and a shared top-level `projects/` directory.
 
 ## Layout
